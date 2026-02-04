@@ -1,0 +1,30 @@
+apiVersion: nmstate.io/v1
+kind: NodeNetworkConfigurationPolicy
+metadata:
+  name: n02-vlan530-storage-network-policy
+spec:
+  nodeSelector:
+    node-role.kubernetes.io/worker: ""
+    kubernetes.io/hostname: n02.ocp.jiec.io
+  desiredState:
+    interfaces:
+      - name: ens3f3np1
+        type: ethernet
+        state: up
+        mtu: 9000
+      - name: ens3f3np1.530
+        description: VLAN 530 - NVME/TCP- MTU 9000 - 192.168.30.102
+        type: vlan
+        state: up
+        mtu: 9000
+        ipv4:
+          enabled: true
+          dhcp: false
+          address:
+            - ip: 192.168.30.102
+              prefix-length: 24
+        ipv6:
+          enabled: false
+        vlan:
+          base-iface: ens3f3np1
+          id: 530
