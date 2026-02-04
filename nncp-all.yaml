@@ -292,7 +292,7 @@ spec:
         state: up
         mtu: 9000
       - name: ens3f5np1.530
-        description: VLAN 530 - NVME/TCP- MTU 9000 - 192.168.20.110
+        description: VLAN 530 - NVME/TCP- MTU 9000 - 192.168.30.105
         type: vlan
         state: up
         mtu: 9000
@@ -300,7 +300,7 @@ spec:
           enabled: true
           dhcp: false
           address:
-            - ip: 192.168.20.110
+            - ip: 192.168.30.105
               prefix-length: 24
         ipv6:
           enabled: false
