@@ -10,12 +10,12 @@ spec:
     interfaces:
       - name: ens3f3np1
         type: ethernet
-        state: up
+        state: absent
         mtu: 9000
       - name: ens3f3np1.530
         description: VLAN 530 - NVME/TCP- MTU 9000 - 192.168.30.106
         type: vlan
-        state: up
+        state: absent
         mtu: 9000
         ipv4:
           enabled: true

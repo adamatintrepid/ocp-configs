@@ -1,0 +1,45 @@
+apiVersion: nmstate.io/v1
+kind: NodeNetworkConfigurationPolicy
+metadata:
+  name: n01.ocp.jiec.io-20
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: n01.ocp.jiec.io # Here we tell the nncp which node to apply it to
+  desiredState:
+    interfaces:
+    - name: ens3f2np0 # Whatever your interface is called
+      description: NVME/TCP - MTU 9000 - 192.168.20.101 # You can give it a good description to logically map everything
+      type: ethernet
+      state: up
+      mtu: 9000
+      ipv4:
+        enabled: true
+        dhcp: false
+        address:
+          - ip: 192.168.20.101
+            prefix-length: 24
+      ipv6:
+        enabled: false
+---
+apiVersion: nmstate.io/v1
+kind: NodeNetworkConfigurationPolicy
+metadata:
+  name: n01.ocp.jiec.io-30
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: n01.ocp.jiec.io # Here we tell the nncp which node to apply it to
+  desiredState:
+    interfaces:
+    - name: ens3f3np1 # Whatever your interface is called
+      description: NVME/TCP - MTU 9000 - 192.168.30.101 # You can give it a good description to logically map everything
+      type: ethernet
+      state: up
+      mtu: 9000
+      ipv4:
+        enabled: true
+        dhcp: false
+        address:
+          - ip: 192.168.30.101
+            prefix-length: 24
+      ipv6:
+        enabled: false
